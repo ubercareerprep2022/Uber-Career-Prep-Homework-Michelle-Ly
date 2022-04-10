@@ -11,6 +11,8 @@ top() → Looks at the top value, and returns it. Does not manipulate the stack
 isEmpty() → Returns True or False if the stack is Empty or not, respectively
 size() → Returns an integer value with the count of elements in the stack
 
+Note: Assumes all inputs are valid as integers
+
 '''
 
 class Stack:
@@ -91,6 +93,7 @@ front() → returns the item at the front of the queue
 size() → returns the size of the queue
 isEmpty() → returns whether or not the queue is empty
 
+Note: Assumes all inputs are valid as integers
 '''
 
 class Queue:
