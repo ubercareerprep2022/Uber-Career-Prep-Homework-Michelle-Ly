@@ -40,7 +40,9 @@ class Stack:
     def pop(self):
         if self.isEmpty():
             return "Stack is empty, cannot pop from stack"
-        return self.stack.pop()
+        value = self.stack[-1]
+        del(self.stack[-1])
+        return value
 
 
 # Try top and size of empty stack
@@ -81,6 +83,7 @@ print ("Size of stack:", myStack.size())
 myStack.push(78)
 print ("Top of stack:", myStack.top())
 print ("Size of stack:", myStack.size())
+print("\n")
 
 '''
 Queues 🧇🫐🍁
@@ -126,7 +129,9 @@ class Queue:
     def dequeue(self):
         if self.isEmpty():
             return "Queue is empty, cannot dequeue from queue"
-        return self.queue.pop(0)
+        value = self.queue[0]
+        del(self.queue[0])
+        return value
 
 
 # Try top and size of empty queue
@@ -142,12 +147,27 @@ myQueue.enqueue(3)
 print ("Size of queue:", myQueue.size())
 print ("Front of queue:", myQueue.front())
 print ("Rear of queue:", myQueue.rear())
+print("\n")
+
 dequeued_value= myQueue.dequeue()
 print ("Dequeued value:", dequeued_value)
 print ("Size of queue:", myQueue.size())
 print ("Front of queue:", myQueue.front())
-myQueue.dequeue()
-myQueue.dequeue()
+print ("Rear of queue:", myQueue.rear())
+print("\n")
+
+dequeued_value= myQueue.dequeue()
+print ("Dequeued value:", dequeued_value)
+print ("Size of queue:", myQueue.size())
+print ("Front of queue:", myQueue.front())
+print ("Rear of queue:", myQueue.rear())
+print("\n")
+
+dequeued_value= myQueue.dequeue()
+print ("Dequeued value:", dequeued_value)
+print ("Size of queue:", myQueue.size())
+print ("Front of queue:", myQueue.front())
+print ("Rear of queue:", myQueue.rear())
 print("\n")
 
 # Try to dequeue from empty queue
