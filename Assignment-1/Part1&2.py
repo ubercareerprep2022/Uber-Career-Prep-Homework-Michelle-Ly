@@ -1,5 +1,5 @@
 '''
-isStringPermutation(...)
+isStringPermutation(...) 🧶
 Implement the function isStringPermutation() that takes two Strings as parameters and 
 returns a Boolean denoting whether the first string is a permutation of the second string.
 

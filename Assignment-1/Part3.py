@@ -1,5 +1,5 @@
 '''
-Stacks 🥞🍓🍁
+Stacks 🥞
 
 Implement the Stack class from scratch (do not use your 
 language's standard stack or queue library/package methods). In this challenge, 
@@ -18,6 +18,7 @@ Note: Assumes all inputs are valid as integers
 class Stack:
     def __init__(self):
         self.stack = []
+        self.min_stack = []
     
     def isEmpty(self):
         if len(self.stack) <= 0:
@@ -35,6 +36,10 @@ class Stack:
         return self.stack[-1]
 
     def push(self, num):
+        if len(self.stack) == 0:
+            self.min_stack.append(num)
+        else:
+            self.min_stack.append(min(self.min_stack[-1], num))
         self.stack.append(num)
 
     def pop(self):
@@ -42,20 +47,29 @@ class Stack:
             return "Stack is empty, cannot pop from stack"
         value = self.stack[-1]
         del(self.stack[-1])
+        self.min_stack.pop()
         return value
+
+    def min(self):
+        if self.isEmpty():
+            return "Stack is empty, no min"
+        return self.min_stack[-1]
 
 
 # Try top and size of empty stack
 myStack = Stack()
 print ("Top of stack:", myStack.top())
 print ("Size of stack:", myStack.size())
+print ("Current minimum:", myStack.min())
 print("\n")
 
 myStack.push(42)
 print ("Top of stack:", myStack.top())
 print ("Size of stack:", myStack.size())
+print ("Current Minimum:", myStack.min())
 popped_value = myStack.pop()
 print ("Popped value:", popped_value)
+print ("Current Minimum:", myStack.min())
 print ("Size of stack:", myStack.size())
 print("\n")
 
@@ -65,17 +79,18 @@ print ("Popped value:", popped_value)
 print("\n")
 
 # Testing with more values
-myStack.push(1)
+myStack.push(19)
 myStack.push(20)
 myStack.push(38)
 myStack.push(41)
+myStack.push(1)
 myStack.push(59)
 print ("Top of stack:", myStack.top())
 print ("Size of stack:", myStack.size())
-# Pop 5
+print ("Current Minimum:", myStack.min())
 popped_value = myStack.pop()
 print ("Popped value:", popped_value)
-# Pop 4
+print ("Current Minimum:", myStack.min())
 popped_value = myStack.pop()
 print ("Popped value:", popped_value)
 print ("Top of stack:", myStack.top())
@@ -83,10 +98,12 @@ print ("Size of stack:", myStack.size())
 myStack.push(78)
 print ("Top of stack:", myStack.top())
 print ("Size of stack:", myStack.size())
+print ("Current Minimum:", myStack.min())
 print("\n")
 
+
 '''
-Queues 🧇🫐🍁
+Queues 🧇
 
 Implement a Queue class from scratch that handles integers, with the following methods: 
 enqueue() → adds an item to the queue
