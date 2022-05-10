@@ -16,6 +16,9 @@ void printList() → Returns a string representation of the linked list
 
 '''
 
+from xml.dom.minidom import Element
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -107,19 +110,45 @@ class LinkedList:
         return curr
 
     def printList(self):
-        if (self.head == None):
-            return "List is empty"
+        if (self.head == None or self.size() == 0):
+            return ("List is empty")
+        string = ""
         curr = self.head
         while(curr):
-            print(curr.data)
+            string = string + str(curr.data) + " "
             curr = curr.next
+        return string
+    
+    def palindrome(self):
+        index = 0
+        compare = []
+        front = self.head
+
+        if (self.size == 1):
+            return True
+
+        while (index < self.size() // 2):
+            compare.append(front.data)
+            front = front.next
+            index += 1
+        
+        if (self.size() % 2 == 1): #odd
+            front = front.next
+        
+        while (front):
+            if (front.data != compare.pop(-1)):
+                return False
+            front = front.next
+
+        return True
+
 
 list = LinkedList()
 
 # Not in bounds
 list.remove(0)
 print("Size of list:", list.size())
-list.printList()
+print(list.printList())
 print("\n")
 
 list.push(3)
@@ -128,17 +157,17 @@ list.push(8)
 list.push(2)
 list.push(1)
 print("Size of list:", list.size())
-list.printList()
+print(list.printList())
 print("\n")
 
 list.insert(0, 3)
 print("Size of list:", list.size())
-list.printList()
+print(list.printList())
 print("\n")
 
 list.insert(65, 1)
 print("Size of list:", list.size())
-list.printList()
+print(list.printList())
 print("\n")
 
 # Not in bounds
@@ -149,12 +178,31 @@ print("\n")
 
 list.remove(0)
 print("Size of list:", list.size())
-list.printList()
+print(list.printList())
 print("\n")
 
 list.remove(4)
 print("Size of list:", list.size())
-list.printList()
+print(list.printList())
+print("\n")
+
+list.remove(0)
+list.remove(0)
+list.remove(0)
+list.remove(0)
+list.remove(0)
+print("Size of list:", list.size())
+print(list.printList())
+
+# Palindrome example
+print("\n")
+list.push(1)
+list.push(2)
+list.push(8)
+list.push(2)
+list.push(1)
+print(list.printList())
+print(list.palindrome())
 
 
 
