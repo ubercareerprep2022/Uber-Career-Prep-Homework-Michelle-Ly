@@ -16,9 +16,6 @@ void printList() → Returns a string representation of the linked list
 
 '''
 
-from xml.dom.minidom import Element
-
-
 class Node:
     def __init__(self, data):
         self.data = data
